@@ -18,11 +18,11 @@ module.exports = app => {
       let user = await this.ctx.model.User.findOne({ userName })
       return user ? {
           message: '用户已存在',
-          status: 0
+          code: 0
         } :
         await this.ctx.model.User.create(payload).then(r => ({
           message: "注册成功",
-          status: 1
+          code: 1
         }))
     }
 
@@ -35,7 +35,7 @@ module.exports = app => {
         })
       return {
         message: "修改密码成功",
-        status: 1
+        code: 1
       }
     }
 
