@@ -9,7 +9,7 @@ module.exports = app => {
   router.get('/login', controller.user.login);
   router.get('/signin', controller.user.signin);
   router.get('/project/find', controller.project.find);
-  router.get('/project/create', controller.project.create);
+  router.post('/project/create', controller.project.create);
   router.get('/project/update', controller.project.update);
   router.get('/project/remove', controller.project.remove);
 };

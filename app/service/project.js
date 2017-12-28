@@ -19,7 +19,7 @@ module.exports = app => {
       })
       return project ? {
         message: '项目名已存在',
-        status: 0
+        code: 0
       } :
         await this.ctx.model.Project.create(palyload).then(r => r)
     }
@@ -32,7 +32,7 @@ module.exports = app => {
         })
       return {
         message: "修改成功",
-        status: 1
+        code: 1
       }
     }
 

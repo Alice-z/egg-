@@ -8,12 +8,12 @@ class User extends Controller {
       userName,
       passWord,
     })
-    if(user){
-      this.ctx.cookies.set('token', userName,{
-        httpOnly:false,
-        encrypt:true
-      })
-    }
+    // if(user){
+    //   this.ctx.cookies.set('token', userName,{
+    //     httpOnly:false,
+    //     encrypt:true
+    //   })
+    // }
     this.ctx.body = {
       code: user ? 1 : 0,
       message: user ? "验证成功" : "用户名密码错误",
