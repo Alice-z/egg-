@@ -4,14 +4,11 @@ const Controller = require('egg').Controller;
 class User extends Controller {
   async login() {
     let { userName, passWord } = this.ctx.query
-    let user = await this.service.user.login({
+    let result = await this.service.user.login({
       userName,
       passWord,
     })
-    this.ctx.body = {
-      status: user ? 1 : 0,
-      message: user ? "验证成功" : "用户名密码错误",
-    }
+    this.ctx.body =result
   }
   async update() {
     let { userName, passWord } = this.ctx.query

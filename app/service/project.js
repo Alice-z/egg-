@@ -9,8 +9,8 @@ module.exports = app => {
 
     async find(project_name) {
       return project_name ?
-        await this.ctx.model.Project.findOne({ project_name }) :
-        await this.ctx.model.Project.find({})
+      await this.ctx.model.Project.findOne({ project_name }) :
+      await this.ctx.model.Project.find({})
     }
 
     async create(palyload) {

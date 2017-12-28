@@ -10,16 +10,27 @@ module.exports = app => {
     async login(payload) {
       let { userName, passWord } = payload
       let user = await this.ctx.model.User.findOne({ userName, passWord });
-      return user
+      if (user) {
+        this.ctx.cookies.set('TOKEN', userName, {
+          httpOnly: false,
+          encrypt: true,
+          maxAge: 60000
+        })
+      }
+      return {
+        data: user || null,
+        status: user ? 1 : 0,
+        message: user ? "验证成功" : "用户名密码错误",
+      }
     }
 
     async signin(payload) {
       let { userName, passWord } = payload
       let user = await this.ctx.model.User.findOne({ userName })
       return user ? {
-          message: '用户已存在',
-          status: 0
-        } :
+        message: '用户已存在',
+        status: 0
+      } :
         await this.ctx.model.User.create(payload).then(r => ({
           message: "注册成功",
           status: 1

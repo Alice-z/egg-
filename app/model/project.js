@@ -8,7 +8,14 @@ module.exports = app => {
     years: { type: String },
     layers: { type: String },
     structure: { type: String },
-    polygon: { type: Object }
+    polygon: {
+      center: {
+        lng: Number,
+        lat: Number
+      },
+      path: Array,
+      zoom: Number
+    }
   })
   return mongoose.model('project', ProjectSchema);
 };
