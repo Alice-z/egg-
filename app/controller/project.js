@@ -11,8 +11,9 @@ class project extends Controller {
   }
 
   async create() {
-    let { query } = this.ctx
-    this.ctx.body = await this.service.project.create(query)
+
+    let { body } = this.ctx.request
+    this.ctx.body = await this.service.project.create(body)
   }
 
   async update() {

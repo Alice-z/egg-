@@ -8,7 +8,10 @@ class User extends Controller {
       userName,
       passWord,
     })
-    this.ctx.body =result
+    this.ctx.body = {
+      code: user ? 1 : 0,
+      message: user ? "验证成功" : "用户名密码错误",
+    }
   }
   async update() {
     let { userName, passWord } = this.ctx.query
